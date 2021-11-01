@@ -12,14 +12,29 @@ public class Anagram {
         System.out.println("Введите вторую строку:");
         secondSentence=scan.nextLine();
 
-        if (stringSingleForm(firstSentence).equalsIgnoreCase(stringSingleForm(secondSentence))){System.out.println("Это анаграмма");}
+        if (stringSingleForm(firstSentence).equals(stringSingleForm(secondSentence))){System.out.println("Это анаграмма");}
         else {System.out.println("Это не анаграмма");}
     }
 
     public static String stringSingleForm(String Sentence){
-        //Sentence=Sentence.toLowerCase();
+        Sentence=Sentence.toLowerCase();
+        //String elementofSentence;
         char[] arrayCharsofSentence = Sentence.toCharArray();
-        Arrays.sort(arrayCharsofSentence);
-        return String.valueOf (arrayCharsofSentence);
+        int lengthOnlyText=0;
+        // определяю колличество элементов массива для char[] arrayOnlyText;
+        for (int i = 0; i < arrayCharsofSentence.length; i++) {
+            if (Character.isLetter(arrayCharsofSentence[i])) {lengthOnlyText++;}
+        }
+        // задаем длинну  массива для char[] arrayOnlyText;
+        char[] arrayOnlyText = new char [lengthOnlyText];
+        int j=0;
+        // проход по массиву, если элемент массива ="букве" присвоить j-му элементу массива arrayOnlyText i-й элемент массива arrayCharsofSentence
+        for (int i = 0; i < arrayCharsofSentence.length; i++) {
+            if (Character.isLetter(arrayCharsofSentence[i])) {arrayOnlyText[j]=arrayCharsofSentence[i]; j++;}
+            }
+        // сортируем полученный массив arrayOnlyText
+        Arrays.sort(arrayOnlyText);
+        // возвращаем массив arrayOnlyText в стринге
+        return String.valueOf(arrayOnlyText);
+        }
     }
-}

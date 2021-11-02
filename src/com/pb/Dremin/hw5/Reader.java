@@ -14,7 +14,54 @@ public class Reader {
           this.dateofBirth = dateofBirth;
           this.phoneNumber = phoneNumber;
      }
+     public String toString() {
+          return readerName + ", читательский № " + numberLibraryCard + ", факультет: " + faculty + ", дата рождения: " + dateofBirth + ", телефон: " + phoneNumber;
+     }
+     private void booksAction(String action, int bookCount) {
+          System.out.println(readerName + " " + action +" " + bookCount + " книг");
+     }
+
+     private void booksAction(String action, String[] bookNames) {
+          System.out.println(readerName + " " + action + " книги: " + String.join(", ", bookNames));
+     }
+
+     private void booksAction(String action, Book[] books) {
+          StringBuilder textList = new StringBuilder();
+
+          for (int i = 0; i < books.length; i++) {
+               if (i > 0) {
+                    textList.append(", ");
+               }
+               textList.append(books[i]);
+          }
+          System.out.println(readerName + " " + action + " книги: " + textList);
+     }
+
+     public void takeBook(int bookCount) {
+          booksAction("взял", bookCount);
+     }
+
+     public void takeBook(String... bookNames) {
+          booksAction("взял", bookNames);
+     }
+
+     public void takeBook(Book... books) {
+          booksAction("взял", books);
+     }
+
+     public void returnBook(int bookCount) {
+          booksAction("вернул", bookCount);
+     }
+
+     public void returnBook(String... bookNames) {
+          booksAction("вернул", bookNames);
+     }
+
+     public void returnBook(Book... books) {
+          booksAction("вернул", books);
+     }
 }
+
 
 //  Имеет перегруженные методы takeBook(), returnBook():
 //  - takeBook, который будет принимать количество взятых книг.

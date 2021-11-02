@@ -12,7 +12,7 @@ public class Book {
     }
 
     public String toString() {
-        return bookName + " (" + writerName + " " + publicationYear + " г.)";
+        return bookName + " " + writerName + " " + publicationYear + " ";
     }
 
     public String getTitle() {
